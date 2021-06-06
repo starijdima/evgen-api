@@ -1,0 +1,21 @@
+{
+"minimum-stability" : "alpha",
+"name" : "shmelevdi/nmfw",
+"description" : "A non-MVC framework",
+"license" : "MIT",
+	"autoload": {
+			"psr-4": {
+				"SDFramework\\": "vendor/engine",
+				"SDFramework\\Controllers": "controllers",
+				"SDFramework\\Routes": "routes"
+			}
+    },
+    "require": {
+        "php": ">=7.2",
+		"vlucas/phpdotenv": "^5.0",
+		"gabordemooij/redbean": "^5.5",
+		"tymon/jwt-auth": "^1.0",
+		"bramus/router": "~1.4",
+		"maximebf/debugbar": "^1.16"
+	}
+}
