@@ -70,47 +70,63 @@ class DefaultController
   
 
 
-   public static function post_request()
+   public static function new_issue()
    {
       $db = (new Database())->ORM;
       $data = $_POST;
 
-      // Указываем, что будем работать с таблицей users
-      $users = $db->dispense('users');
-      // Заполняем объект свойствами
-      $users->login = $data['login'];
-      $users->password = $data['password'];
-      $users->email = $data['email'];
-      $users->f_name = $data['f_name'];
-      $users->s_name = $data['s_name'];
-      $users->t_name = $data['t_name'];
-      $users->user_post = $data['user_post'];
-      $users->user_state = $data['user_state'];
-      $users->secure = 0;
+      $issue = $db->dispense('issues');
+      
+      $issue->id_issue = $data['id_issue'];
+      $issue->id_category = $data['id_category'];
+      $issue->title = $data['title'];
+      $issue->description = $data['description'];
+      $issue->priority = $data['priority'];
+      $issue->create_date = $data['create_date'];
+      $issue->resolve_date = $data['resolve_date'];
+      $issue->id_status = $data['id_status'];
+      $issue->id_user = $data['id_user'];
+    
 
    
       // Сохраняем объект
-      $db->store($users);
+      $db->store($issue);
 
       return json_encode($data);
    }
+
+   public static function test()
+   {
+      $db = (new Database())->ORM;
+      $data = $_POST;
+
+      $test = $db->dispense('test');
+      
+      $test->test = $data['test'];
+      
+    
+
+   
+      // Сохраняем объект
+      $db->store($test);
+
+      return json_encode($data);
+   }
+
+
 
    public static function change_req()
    {
       $db = (new Database())->ORM;
       $data = $_POST;
-      
-     
-
       $id = $data['id'];
-      // Загружаем объект с ID
-      $users = $db->load('users', $id);
-      // Обращаемся к свойству объекта и назначаем ему новое значение
-      $users->user_state = $data['user_state'];
-      $users->secure = $data['secure'];
+      $issues = $db->load('issues', $id);
+      $issues->is_admin = $data['is_admin'];
+      $issues->id_status = $data['id_status'];
+    
       
       // Сохраняем объект
-      $db->store($users);
+      $db->store($issues);
 
       return json_encode($data);
    }

@@ -22,8 +22,12 @@ $route->get('/api/get:(\w+)/from:(\w+)/id:(\w+)', function($field, $table, $id) 
   echo \SDFramework\Controllers\DefaultController::get_user($field, $table,  $id);
 });
 
-$route->post('/api/post_request', function() {
-  echo \SDFramework\Controllers\DefaultController::post_request();
+$route->post('/api/new_issue', function() {
+  echo \SDFramework\Controllers\DefaultController::new_issue();
+});
+
+$route->post('/api/test', function() {
+  echo \SDFramework\Controllers\DefaultController::test();
 });
 
 $route->post('/api/change_req', function() {
