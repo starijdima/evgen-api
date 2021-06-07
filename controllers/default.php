@@ -86,9 +86,48 @@ class DefaultController
       $issue->resolve_date = $data['resolve_date'];
       $issue->id_status = $data['id_status'];
       $issue->id_user = $data['id_user'];
+      $issue->user_mail = $data['user_mail'];
     
+      // Сохраняем объект
+      $db->store($issue);
 
-   
+      return json_encode($data);
+   }
+
+   public static function send_mail()
+   {
+      $db = (new Database())->ORM;
+      $data = $_POST;
+
+      $issue = $db->dispense('issues');
+      
+      $id = $data['id'];
+      $issue = $db->load('issues', $id);
+      $issue->back_form = $data['back_form'];
+    
+      // Сохраняем объект
+      $db->store($issue);
+
+      return json_encode($data);
+   }
+
+
+   public static function save_changes()
+   {
+      $db = (new Database())->ORM;
+      $data = $_POST;
+
+      $issue = $db->dispense('issues');
+      
+      $id = $data['id'];
+      $issue = $db->load('issues', $id);
+      $issue->title = $data['title'];
+      $issue->user_mail = $data['user_mail'];
+      $issue->description = $data['description'];
+      $issue->id_category = $data['id_category'];
+      $issue->priority = $data['priority'];
+      
+    
       // Сохраняем объект
       $db->store($issue);
 

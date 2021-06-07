@@ -34,6 +34,14 @@ $route->post('/api/change_req', function() {
   echo \SDFramework\Controllers\DefaultController::change_req();
 });
 
+$route->post('/api/send_mail', function() {
+  echo \SDFramework\Controllers\DefaultController::send_mail();
+});
+
+$route->post('/api/save_changes', function() {
+  echo \SDFramework\Controllers\DefaultController::save_changes();
+});
+
 $route->post('/api/delete_req', function() {
   echo \SDFramework\Controllers\DefaultController::delete_req();
 });
