@@ -87,6 +87,7 @@ class DefaultController
       $issue->id_status = $data['id_status'];
       $issue->id_user = $data['id_user'];
       $issue->user_mail = $data['user_mail'];
+      $issue->id_group = $data['id_group'];
     
       // Сохраняем объект
       $db->store($issue);
@@ -162,6 +163,7 @@ class DefaultController
       $issues = $db->load('issues', $id);
       $issues->is_admin = $data['is_admin'];
       $issues->id_status = $data['id_status'];
+      $issues->admin_mail = $data['admin_mail'];
     
       
       // Сохраняем объект
@@ -176,8 +178,8 @@ class DefaultController
       $data = $_POST;
 
       $id = $data['id'];
-      $users = $db->load('users', $id);
-      $db->trash($users);
+      $issues = $db->load('issues', $id);
+      $db->trash($issues);
 
       return json_encode($data);
    }
