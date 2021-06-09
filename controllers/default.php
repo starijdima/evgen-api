@@ -164,6 +164,7 @@ class DefaultController
       $issues->is_admin = $data['is_admin'];
       $issues->id_status = $data['id_status'];
       $issues->admin_mail = $data['admin_mail'];
+      $issues->resolve_date = $data['resolve_date'];
     
       
       // Сохраняем объект
